@@ -3,4 +3,3 @@ CREATE TABLE "user" (
     visits int NOT NULL DEFAULT 0
 );
 
-SELECT * FROM "user";

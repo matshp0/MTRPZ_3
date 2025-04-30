@@ -2,9 +2,10 @@ services:
   app:
     build: .
     image: js_lab03
-    network_mode: host
     env_file:
       - .env
+    network_mode: host
+
   db:
     image: postgres:15
     container_name: postgres_db
@@ -16,5 +17,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+
 volumes:
   postgres_data:
+
