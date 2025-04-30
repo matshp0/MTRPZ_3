@@ -26,7 +26,7 @@ export const apiRoutes: FastifyPluginAsync = async (
           visits: 1
         }
       });
-      return 0;
+      return 1;
     }
     console.log('query 3');
     await prisma.user.update({
