@@ -6,7 +6,7 @@ fetch('/api/visits')
     return response.text();
   })
   .then((data) => {
-    document.getElementById('output').textContent = `${data} times`;
+    document.getElementById('output').textContent = `${data} times`;//hello
   })
   .catch((error) => {
     document.getElementById('output').textContent = 'Error: ' + error.message});

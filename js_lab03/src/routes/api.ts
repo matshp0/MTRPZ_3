@@ -1,7 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { FastifyPluginAsync } from 'fastify';
-import { PrismaClient, Prisma } from '@prisma/client';
-import { AddressInfo } from 'node:net';
+import { PrismaClient } from '@prisma/client';
 
 export const apiRoutes: FastifyPluginAsync = async (
   fastify: FastifyInstance,
@@ -35,6 +34,6 @@ export const apiRoutes: FastifyPluginAsync = async (
         visits: query.visits + 1
       }
     });
-    return query.visits + 1;
+    return query.visits + 1; //asd
   });
 };

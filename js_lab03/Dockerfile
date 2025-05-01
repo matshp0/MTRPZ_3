@@ -1,10 +1,21 @@
+FROM node:23.4-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY ./prisma ./prisma
+COPY . .
+RUN npm run build
+
 FROM node:23.4-alpine
 WORKDIR /app
-COPY package-lock.json package.json ./
-RUN npm ci
-COPY ./prisma ./
+COPY package*.json ./
+COPY prisma ./prisma
+COPY public ./public
+RUN npm ci --omit=dev
 RUN npx prisma generate
-COPY ./ ./
-RUN npm run build
+COPY --from=builder /app/dist ./dist
 EXPOSE 8080
-ENTRYPOINT ["npm", "run", "start"]
+CMD ["npm", "run", "start"]
+
+
+
